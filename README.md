@@ -75,26 +75,8 @@ Pada tahap ini yaitu membagi data menjadi dua bagian: data pelatihan (train) dan
 # Model Building (LSTM)
 
 Menghasilkan output: 
-Model: "functional_1"
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
-┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
-│ input_layer_1 (InputLayer)      │ (None, 50)             │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ embedding_1 (Embedding)         │ (None, 50, 64)         │        64,000 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ lstm (LSTM)                     │ (None, 128)            │        98,816 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dropout (Dropout)               │ (None, 128)            │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dense_2 (Dense)                 │ (None, 64)             │         8,256 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dense_3 (Dense)                 │ (None, 5)              │           325 │
-└─────────────────────────────────┴────────────────────────┴───────────────┘
- Total params: 171,397 (669.52 KB)
- Trainable params: 171,397 (669.52 KB)
- Non-trainable params: 0 (0.00 B)
- None
+
+![Gambar](image/1.png)
 
 Pada tahap ini yaitu membangun model LSTM untuk klasifikasi teks dengan input berupa deskripsi tempat wisata. Model dimulai dengan embedding layer untuk representasi kata, dilanjutkan dengan LSTM layer untuk memproses urutan teks, dan dropout layer untuk mencegah overfitting. Kemudian, dense layer diikuti dengan output layer yang menggunakan fungsi aktivasi sigmoid untuk memprediksi 5 kategori tipe wisata. Model dikompilasi dengan binary crossentropy dan adam optimizer, serta menggunakan accuracy sebagai metrik evaluasi.
 
@@ -105,24 +87,8 @@ Pada tahapan training ini yaitu melatih model LSTM dengan early stopping untuk m
 # Evaluation
 
 Menghasilkan output: 
-Evaluasi Model LSTM pada Set Validasi:
-Loss: 0.1740
-Akurasi: 0.8046
-6/6 ━━━━━━━━━━━━━━━━━━━━ 0s 47ms/step
 
-Laporan Klasifikasi pada Set Validasi untuk Model LSTM:
-              precision    recall  f1-score   support
-
-        alam       0.96      0.97      0.97       145
-      buatan       0.98      0.84      0.90        55
-      budaya       0.86      0.67      0.75        36
-      religi       0.89      0.73      0.80        11
-     edukasi       0.74      0.87      0.80        23
-
-   micro avg       0.93      0.89      0.91       270
-   macro avg       0.88      0.81      0.84       270
-weighted avg       0.93      0.89      0.90       270
- samples avg       0.96      0.93      0.93       270
+![Gambar](image/2.png)
 
 Yang dimana mengevaluasi model LSTM pada data validasi dengan menghitung loss dan akurasi, lalu mengonversi prediksi probabilitas menjadi prediksi biner. Laporan klasifikasi kemudian ditampilkan untuk masing-masing kategori tipe wisata, memberikan metrik seperti precision, recall, dan f1-score.
 
@@ -137,83 +103,8 @@ Untuk tahapan ini yaitu mendefinisikan fungsi recommend_places yang memberikan r
 # Interaksi user (input langsung)
 
 Menghasilkan output:
-==== SISTEM REKOMENDASI WISATA ====
 
-Masukkan provinsi tujuan wisata: jawa barat
-Masukkan tipe wisata yang diinginkan (pisahkan dengan koma, contoh: alam, budaya, religi): alam
-Masukkan ciri-ciri tempat wisata (kalimat bebas): gunung yang indah
-
-=== RINGKASAN INPUT USER ===
-Provinsi: jawa barat
-Tipe wisata dipilih: ['alam']
-Ciri-ciri input: gunung yang indah
-1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 46ms/step
-
-=== Prediksi Sistem Berdasarkan Ciri-ciri ===
-Probabilitas Label: {'alam': '0.23', 'buatan': '0.19', 'budaya': '0.92', 'religi': '0.70', 'edukasi': '0.11'}
-
-=== Rekomendasi Tempat Wisata ===
-
-1. Nama Tempat : Gunung Padang
-   Provinsi    : jawa barat
-   Deskripsi   : Gunung Padang adalah situs megalitikum prasejarah yang menawarkan wisata budaya dan sejarah yang mendalam. Pengunjung dapat menjelajahi peninggalan purbakala dan belajar tentang peradaban kuno yang pernah mendiami area ini.
-   Gambar      : Gunung Padang.jpg
-   Skor Kemiripan: 0.2022
---------------------------------------------------
-2. Nama Tempat : Mount Gede Pangrango National Park
-   Provinsi    : jawa barat
-   Deskripsi   : Mount Gede Pangrango National Park adalah surga wisata alam pegunungan yang menawarkan keindahan hutan tropis, air terjun, dan pendakian gunung. Taman nasional ini menjadi rumah bagi beragam flora dan fauna endemik.
-   Gambar      : Mount Gede Pangrango National Park.jpg
-   Skor Kemiripan: 0.1768
---------------------------------------------------
-3. Nama Tempat : Gunung Mas Agrotourism
-   Provinsi    : jawa barat
-   Deskripsi   : Gunung Mas Agrotourism menawarkan pengalaman wisata alam dan edukasi di perkebunan teh yang luas. Pengunjung dapat belajar tentang proses pembuatan teh, menikmati pemandangan hijau, serta mencoba berbagai aktivitas menarik seperti tea walk dan off-road.
-   Gambar      : Gunung Mas Agrotourism.jpg
-   Skor Kemiripan: 0.1713
---------------------------------------------------
-4. Nama Tempat : Jembatan Gantung Situ Gunung 555
-   Provinsi    : jawa barat
-   Deskripsi   : Jembatan Gantung Situ Gunung 555 adalah destinasi wisata alam yang menawarkan pengalaman berjalan di atas jembatan gantung terpanjang di Asia Tenggara. Dari jembatan ini, pengunjung dapat menikmati pemandangan hutan dan lembah yang menakjubkan.
-   Gambar      : Jembatan Gantung Situ Gunung 555.jpeg
-   Skor Kemiripan: 0.1698
---------------------------------------------------
-5. Nama Tempat : Pemandian Air Panas Ciater
-   Provinsi    : jawa barat
-   Deskripsi   : Pemandian Air Panas Ciater adalah destinasi wisata alam yang menawarkan pemandian air panas alami bersumber dari gunung berapi. Air panas ini dipercaya memiliki khasiat kesehatan dan cocok untuk relaksasi dan terapi.
-   Gambar      : Pemandian Air Panas Ciater.jpg
-   Skor Kemiripan: 0.1665
---------------------------------------------------
-6. Nama Tempat : Pantai Cemara Indah ( CI )
-   Provinsi    : jawa barat
-   Deskripsi   : Pantai Cemara Indah (CI) adalah pantai yang menawarkan wisata alam dengan deretan pohon cemara yang rindang. Suasana tenang dan pemandangan yang indah menjadikannya tempat yang cocok untuk bersantai dan piknik.
-   Gambar      : Pantai Cemara Indah ( CI ).jpg
-   Skor Kemiripan: 0.1564
---------------------------------------------------
-7. Nama Tempat : Pantai BALI (Balongan Indah),Indramayu
-   Provinsi    : jawa barat
-   Deskripsi   : Pantai BALI (Balongan Indah), Indramayu, adalah destinasi wisata alam pantai yang menawarkan pemandangan indah dan fasilitas rekreasi. Cocok untuk bersantai, berenang, dan menikmati suasana pantai.
-   Gambar      : Pantai BALI (Balongan Indah),Indramayu.jpg
-   Skor Kemiripan: 0.1350
---------------------------------------------------
-8. Nama Tempat : Situ Cipanten
-   Provinsi    : jawa barat
-   Deskripsi   : Situ Cipanten adalah danau alami yang menawarkan wisata alam dengan pemandangan yang indah dan suasana yang tenang. Cocok untuk memancing, berperahu, atau sekadar bersantai menikmati ketenangan alam.
-   Gambar      : Situ Cipanten.jpg
-   Skor Kemiripan: 0.1227
---------------------------------------------------
-9. Nama Tempat : Situ Batu Karut
-   Provinsi    : jawa barat
-   Deskripsi   : Situ Batu Karut adalah destinasi wisata alam yang menawarkan pemandangan danau yang indah dan suasana yang tenang. Tempat ini cocok untuk memancing, berperahu, atau sekadar bersantai menikmati ketenangan alam.
-   Gambar      : Situ Batu Karut.jpg
-   Skor Kemiripan: 0.1192
---------------------------------------------------
-10. Nama Tempat : Curug Cikondang
-   Provinsi    : jawa barat
-   Deskripsi   : Curug Cikondang menawarkan pesona wisata alam air terjun yang indah dengan kolam alami yang jernih. Tempat ini cocok untuk berenang, bersantai, dan menikmati keindahan alam yang masih asri.
-   Gambar      : Curug Cikondang.jpg
-   Skor Kemiripan: 0.1179
---------------------------------------------------
+![Gambar](image/3.png)
 
 Dari tahapan ini memungkinkan pengguna untuk memasukkan provinsi, tipe wisata, dan deskripsi tempat wisata. Sistem kemudian memvalidasi input, memprediksi tipe wisata berdasarkan deskripsi, dan memberikan rekomendasi tempat wisata yang sesuai dengan provinsi dan tipe yang dipilih. Hasil rekomendasi mencakup nama tempat, provinsi, deskripsi, gambar, dan skor kemiripan.
 
