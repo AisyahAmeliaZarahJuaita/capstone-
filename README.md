@@ -103,7 +103,6 @@ Menampilkan statistik deskriptif untuk kolom numerik, seperti mean, std, min, da
 
 - kode:
    
-Visualisasi distribusi rating
 plt.figure(figsize=(10, 6))
 sns.histplot(df['rating'], bins=20, kde=True)
 plt.title('Distribusi Rating Tempat Wisata')
@@ -111,7 +110,6 @@ plt.xlabel('Rating')
 plt.ylabel('Frekuensi')
 plt.show()
 
-Visualisasi distribusi jumlah ulasan
 plt.figure(figsize=(10, 6))
 sns.histplot(df['total_reviews'], bins=20, kde=True)
 plt.title('Distribusi Jumlah Ulasan Tempat Wisata')
@@ -123,7 +121,6 @@ Pada tahap ini menampilkan histogram rating tempat wisata dengan garis KDE (kurv
 
 - kode:
   
-Visualisasi jumlah tempat wisata berdasarkan provinsi
 plt.figure(figsize=(12, 6))
 sns.countplot(y='province', data=df, order=df['province'].value_counts().index)
 plt.title('Distribusi Tempat Wisata Berdasarkan Provinsi')
@@ -135,7 +132,6 @@ Menampilkan jumlah tempat wisata per provinsi dalam bentuk bar horizontal. Provi
 
 - kode:
   
-Korelasi antara rating dan jumlah ulasan
 corr_matrix = df[['rating', 'total_reviews']].corr()
 
 plt.figure(figsize=(8, 6))
@@ -147,7 +143,6 @@ Menghitung korelasi Pearson antara kolom rating dan total_reviews. Menampilkan m
 
 - kode:
   
-Visualisasi jumlah tempat wisata berdasarkan tipe kategori (alam, buatan, dll)
 category_columns = ['alam', 'buatan', 'budaya', 'religi', 'edukasi']
 category_counts = df[category_columns].sum()
 
