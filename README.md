@@ -185,17 +185,17 @@ Menjumlahkan nilai di setiap kolom kategori. Diasumsikan bahwa kolom-kolom ini b
 
 # Data Preparation
 
-# TOKENIZER & SEQUENCE PREPARATION
+- Tokenizer dan Sequence Preparation 
 
 Pada tahap ini mempersiapkan data teks dengan mengubah deskripsi tempat wisata menjadi urutan angka menggunakan Tokenizer dan membatasi jumlah kata hingga 1000 kata yang paling sering muncul. Kemudian, urutan angka tersebut dipadatkan agar memiliki panjang yang konsisten, yaitu 50 kata, sehingga siap digunakan dalam pelatihan model machine learning. 
 
-# Split train-val (simple split)
+- Split train-val (simple split)
 
 Pada tahap ini yaitu membagi data menjadi dua bagian: data pelatihan (train) dan data validasi (val). 80% dari data digunakan untuk pelatihan (x_train, y_train), sementara 20% sisanya digunakan untuk validasi (x_val, y_val).
 
 # Modeling
 
-# Model Building (LSTM)
+- Model Building (LSTM)
 
 Menghasilkan output: 
 
@@ -203,7 +203,7 @@ Menghasilkan output:
 
 Pada tahap ini yaitu membangun model LSTM untuk klasifikasi teks dengan input berupa deskripsi tempat wisata. Model dimulai dengan embedding layer untuk representasi kata, dilanjutkan dengan LSTM layer untuk memproses urutan teks, dan dropout layer untuk mencegah overfitting. Kemudian, dense layer diikuti dengan output layer yang menggunakan fungsi aktivasi sigmoid untuk memprediksi 5 kategori tipe wisata. Model dikompilasi dengan binary crossentropy dan adam optimizer, serta menggunakan accuracy sebagai metrik evaluasi.
 
-# Training (MODIFIKASI)
+- Training (MODIFIKASI)
 
 Pada tahapan training ini yaitu melatih model LSTM dengan early stopping untuk menghentikan pelatihan jika val_loss tidak membaik selama 3 epoch. Pelatihan dilakukan selama 10 epoch dengan batch size 16, menggunakan data validasi untuk evaluasi.
 
