@@ -94,12 +94,16 @@ print(df.duplicated().sum())
 
 Menampilkan jumlah baris data yang duplikat (sama persis).
 
+![Gambar](image/a.png)
+
 - kode:
   
 print("\nStatistik Deskriptif:")
 print(df.describe())
 
 Menampilkan statistik deskriptif untuk kolom numerik, seperti mean, std, min, dan quartiles.
+
+![Gambar](image/b.png)
 
 - kode:
    
@@ -119,6 +123,10 @@ plt.show()
 
 Pada tahap ini menampilkan histogram rating tempat wisata dengan garis KDE (kurva sebaran), lalu juga menampilkan distribusi jumlah ulasan dari tempat wisata.
 
+![Gambar](image/c.png)
+
+![Gambar](image/d.png)
+
 - kode:
   
 plt.figure(figsize=(12, 6))
@@ -130,6 +138,8 @@ plt.show()
 
 Menampilkan jumlah tempat wisata per provinsi dalam bentuk bar horizontal. Provinsi diurutkan berdasarkan jumlah terbanyak.
 
+![Gambar](image/e.png)
+
 - kode:
   
 corr_matrix = df[['rating', 'total_reviews']].corr()
@@ -140,6 +150,8 @@ plt.title('Korelasi Antara Rating dan Jumlah Ulasan')
 plt.show()
 
 Menghitung korelasi Pearson antara kolom rating dan total_reviews. Menampilkan matriks korelasi dalam bentuk heatmap, lengkap dengan nilai korelasinya.
+
+![Gambar](image/f.png)
 
 - kode:
   
@@ -155,6 +167,8 @@ plt.xticks(rotation=45)
 plt.show()
 
 Menjumlahkan nilai di setiap kolom kategori. Diasumsikan bahwa kolom-kolom ini berisi nilai biner (0/1), menunjukkan apakah tempat wisata tersebut termasuk dalam kategori tertentu. Menampilkan jumlah tempat wisata untuk masing-masing kategori dalam bentuk bar chart.
+
+![Gambar](image/g.png)
 
 ## Variabel-Variabel pada Dataset
 
@@ -184,7 +198,7 @@ Pada tahap ini yaitu membagi data menjadi dua bagian: data pelatihan (train) dan
 
 Menghasilkan output: 
 
-![Gambar](image/1.png)
+![Gambar](image/h.png)
 
 Pada tahap ini yaitu membangun model LSTM untuk klasifikasi teks dengan input berupa deskripsi tempat wisata. Model dimulai dengan embedding layer untuk representasi kata, dilanjutkan dengan LSTM layer untuk memproses urutan teks, dan dropout layer untuk mencegah overfitting. Kemudian, dense layer diikuti dengan output layer yang menggunakan fungsi aktivasi sigmoid untuk memprediksi 5 kategori tipe wisata. Model dikompilasi dengan binary crossentropy dan adam optimizer, serta menggunakan accuracy sebagai metrik evaluasi.
 
@@ -196,7 +210,7 @@ Pada tahapan training ini yaitu melatih model LSTM dengan early stopping untuk m
 
 Menghasilkan output: 
 
-![Gambar](image/2.png)
+![Gambar](image/i.png)
 
 Yang dimana mengevaluasi model LSTM pada data validasi dengan menghitung loss dan akurasi, lalu mengonversi prediksi probabilitas menjadi prediksi biner. Laporan klasifikasi kemudian ditampilkan untuk masing-masing kategori tipe wisata, memberikan metrik seperti precision, recall, dan f1-score.
 
@@ -212,7 +226,7 @@ Untuk tahapan ini yaitu mendefinisikan fungsi recommend_places yang memberikan r
 
 Menghasilkan output:
 
-![Gambar](image/3.png)
+![Gambar](image/j.png)
 
 Dari tahapan ini memungkinkan pengguna untuk memasukkan provinsi, tipe wisata, dan deskripsi tempat wisata. Sistem kemudian memvalidasi input, memprediksi tipe wisata berdasarkan deskripsi, dan memberikan rekomendasi tempat wisata yang sesuai dengan provinsi dan tipe yang dipilih. Hasil rekomendasi mencakup nama tempat, provinsi, deskripsi, gambar, dan skor kemiripan.
 
