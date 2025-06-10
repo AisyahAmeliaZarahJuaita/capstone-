@@ -48,17 +48,19 @@ java.xlsx: memiliki 868 baris dan memiliki 9 kolom.
 
 ## Exploratory Data Analysis
 
-- "df = pd.read_excel('java_tourism.xlsx')
-  
+- kode: 
+"df = pd.read_excel('java_tourism.xlsx')
 df.head()"
 
 Pada tahap ini membaca file Excel berisi data wisata di Jawa dan menampilkan 5 baris pertama dari dataframe df.
 
-- "df.info()"
+- kode: 
+"df.info()"
 
 Tahap ini menampilkan informasi umum seperti jumlah baris, kolom, tipe data setiap kolom, dan jumlah data non-null (tidak kosong).
 
-- "keywords = {
+- Kode:
+"keywords = {
     'alam': ['gunung', 'pantai', 'danau', 'air terjun', 'hutan', 'taman nasional', 'cagar alam', 'gua', 'pemandangan', 'alam', 'sungai', 'laut'],
     'buatan': ['taman hiburan', 'museum', 'monumen', 'tempat wisata', 'kebun binatang', 'waterpark', 'kolam renang', 'gedung', 'bangunan', 'buatan', 'buatan manusia', 'theme park'],
     'budaya': ['budaya', 'tradisional', 'adat', 'seni', 'pertunjukan', 'sejarah', 'kerajaan', 'festival', 'tari', 'musik', 'candi', 'batik', 'keraton'],
@@ -75,26 +77,29 @@ Fungsi ini mendefinisikan kata kunci untuk mengelompokkan tempat wisata ke dalam
 4. religi: tempat bernuansa agama seperti masjid, pura, makam.
 5. edukasi: tempat edukatif seperti planetarium, museum sains.
 
-
-- Memeriksa data yang hilang
+- kode: 
+Memeriksa data yang hilang
 print("Data yang hilang di setiap kolom:")
 print(df.isnull().sum())
 
 Menampilkan jumlah nilai yang hilang (NaN) pada setiap kolom.
 
-- Memeriksa duplikasi
+- kode: 
+Memeriksa duplikasi
 print("\nData duplikat:")
 print(df.duplicated().sum())
 
 Menampilkan jumlah baris data yang duplikat (sama persis).
 
-- Statistik deskriptif untuk data numerik
+- kode: 
+Statistik deskriptif untuk data numerik
 print("\nStatistik Deskriptif:")
 print(df.describe())
 
 Menampilkan statistik deskriptif untuk kolom numerik, seperti mean, std, min, dan quartiles.
 
-- Visualisasi distribusi rating
+- kode: 
+Visualisasi distribusi rating
 plt.figure(figsize=(10, 6))
 sns.histplot(df['rating'], bins=20, kde=True)
 plt.title('Distribusi Rating Tempat Wisata')
@@ -112,7 +117,8 @@ plt.show()
 
 Pada tahap ini menampilkan histogram rating tempat wisata dengan garis KDE (kurva sebaran), lalu juga menampilkan distribusi jumlah ulasan dari tempat wisata.
 
-- Visualisasi jumlah tempat wisata berdasarkan provinsi
+- kode:
+Visualisasi jumlah tempat wisata berdasarkan provinsi
 plt.figure(figsize=(12, 6))
 sns.countplot(y='province', data=df, order=df['province'].value_counts().index)
 plt.title('Distribusi Tempat Wisata Berdasarkan Provinsi')
@@ -122,7 +128,8 @@ plt.show()
 
 Menampilkan jumlah tempat wisata per provinsi dalam bentuk bar horizontal. Provinsi diurutkan berdasarkan jumlah terbanyak.
 
-- Korelasi antara rating dan jumlah ulasan
+- kode:
+Korelasi antara rating dan jumlah ulasan
 corr_matrix = df[['rating', 'total_reviews']].corr()
 
 plt.figure(figsize=(8, 6))
@@ -132,7 +139,8 @@ plt.show()
 
 Menghitung korelasi Pearson antara kolom rating dan total_reviews. Menampilkan matriks korelasi dalam bentuk heatmap, lengkap dengan nilai korelasinya.
 
-- Visualisasi jumlah tempat wisata berdasarkan tipe kategori (alam, buatan, dll)
+- kode:
+Visualisasi jumlah tempat wisata berdasarkan tipe kategori (alam, buatan, dll)
 category_columns = ['alam', 'buatan', 'budaya', 'religi', 'edukasi']
 category_counts = df[category_columns].sum()
 
