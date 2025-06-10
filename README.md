@@ -46,6 +46,18 @@ Proyek ini menggunakan dataset yang tersedia di Kaggle:
 
 java.xlsx: memiliki 868 baris dan memiliki 9 kolom. 
 
+## Variabel-Variabel pada Dataset
+
+1. `no` - nomor urut
+2. `place_name` - nama tempat wisata
+3. `deskripsi` - deskripsi singkat mengenai tempat wisata
+4. `review_link` - link ulasan
+5. `rating` - nilai rating (0-5)
+6. `total_reviews` - jumlah total ulasan
+7. `address` - alamat lengkap
+8. `city` - kota lokasi wisata
+9. `province` - provinsi lokasi wisata
+    
 ## Exploratory Data Analysis
 
 - kode:
@@ -170,17 +182,6 @@ Menjumlahkan nilai di setiap kolom kategori. Diasumsikan bahwa kolom-kolom ini b
 
 ![Gambar](image/g.png)
 
-## Variabel-Variabel pada Dataset
-
-1. `no` - nomor urut
-2. `place_name` - nama tempat wisata
-3. `deskripsi` - deskripsi singkat mengenai tempat wisata
-4. `review_link` - link ulasan
-5. `rating` - nilai rating (0-5)
-6. `total_reviews` - jumlah total ulasan
-7. `address` - alamat lengkap
-8. `city` - kota lokasi wisata
-9. `province` - provinsi lokasi wisata
 
 # Data Preparation
 
