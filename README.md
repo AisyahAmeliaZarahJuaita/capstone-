@@ -48,6 +48,104 @@ java.xlsx: memiliki 868 baris dan memiliki 9 kolom.
 
 ## Exploratory Data Analysis
 
+- "df = pd.read_excel('java_tourism.xlsx')
+  
+df.head()"
+
+Pada tahap ini membaca file Excel berisi data wisata di Jawa dan menampilkan 5 baris pertama dari dataframe df.
+
+- "df.info()"
+
+Tahap ini menampilkan informasi umum seperti jumlah baris, kolom, tipe data setiap kolom, dan jumlah data non-null (tidak kosong).
+
+- "keywords = {
+    'alam': ['gunung', 'pantai', 'danau', 'air terjun', 'hutan', 'taman nasional', 'cagar alam', 'gua', 'pemandangan', 'alam', 'sungai', 'laut'],
+    'buatan': ['taman hiburan', 'museum', 'monumen', 'tempat wisata', 'kebun binatang', 'waterpark', 'kolam renang', 'gedung', 'bangunan', 'buatan', 'buatan manusia', 'theme park'],
+    'budaya': ['budaya', 'tradisional', 'adat', 'seni', 'pertunjukan', 'sejarah', 'kerajaan', 'festival', 'tari', 'musik', 'candi', 'batik', 'keraton'],
+    'religi': ['masjid', 'gereja', 'pura', 'vihara', 'kuil', 'makam', 'ziarah', 'religi', 'agama', 'keramat', 'rohani'],
+    'edukasi': ['edukasi', 'pendidikan', 'belajar', 'ilmu pengetahuan', 'sekolah', 'universitas', 'planetarium', 'observatorium', 'arkeologi', 'penelitian', 'sains', 'iptek']
+
+}"
+
+Fungsi ini mendefinisikan kata kunci untuk mengelompokkan tempat wisata ke dalam lima kategori:
+
+1. alam: wisata alam seperti gunung, pantai, danau.
+2. buatan: wisata buatan manusia seperti taman hiburan, museum.
+3. budaya: terkait budaya/tradisi seperti candi, seni, keraton.
+4. religi: tempat bernuansa agama seperti masjid, pura, makam.
+5. edukasi: tempat edukatif seperti planetarium, museum sains.
+
+
+- Memeriksa data yang hilang
+print("Data yang hilang di setiap kolom:")
+print(df.isnull().sum())
+
+Menampilkan jumlah nilai yang hilang (NaN) pada setiap kolom.
+
+- Memeriksa duplikasi
+print("\nData duplikat:")
+print(df.duplicated().sum())
+
+Menampilkan jumlah baris data yang duplikat (sama persis).
+
+- Statistik deskriptif untuk data numerik
+print("\nStatistik Deskriptif:")
+print(df.describe())
+
+Menampilkan statistik deskriptif untuk kolom numerik, seperti mean, std, min, dan quartiles.
+
+- Visualisasi distribusi rating
+plt.figure(figsize=(10, 6))
+sns.histplot(df['rating'], bins=20, kde=True)
+plt.title('Distribusi Rating Tempat Wisata')
+plt.xlabel('Rating')
+plt.ylabel('Frekuensi')
+plt.show()
+
+Visualisasi distribusi jumlah ulasan
+plt.figure(figsize=(10, 6))
+sns.histplot(df['total_reviews'], bins=20, kde=True)
+plt.title('Distribusi Jumlah Ulasan Tempat Wisata')
+plt.xlabel('Jumlah Ulasan')
+plt.ylabel('Frekuensi')
+plt.show()
+
+Pada tahap ini menampilkan histogram rating tempat wisata dengan garis KDE (kurva sebaran), lalu juga menampilkan distribusi jumlah ulasan dari tempat wisata.
+
+- Visualisasi jumlah tempat wisata berdasarkan provinsi
+plt.figure(figsize=(12, 6))
+sns.countplot(y='province', data=df, order=df['province'].value_counts().index)
+plt.title('Distribusi Tempat Wisata Berdasarkan Provinsi')
+plt.xlabel('Jumlah Tempat Wisata')
+plt.ylabel('Provinsi')
+plt.show()
+
+Menampilkan jumlah tempat wisata per provinsi dalam bentuk bar horizontal. Provinsi diurutkan berdasarkan jumlah terbanyak.
+
+- Korelasi antara rating dan jumlah ulasan
+corr_matrix = df[['rating', 'total_reviews']].corr()
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title('Korelasi Antara Rating dan Jumlah Ulasan')
+plt.show()
+
+Menghitung korelasi Pearson antara kolom rating dan total_reviews. Menampilkan matriks korelasi dalam bentuk heatmap, lengkap dengan nilai korelasinya.
+
+- Visualisasi jumlah tempat wisata berdasarkan tipe kategori (alam, buatan, dll)
+category_columns = ['alam', 'buatan', 'budaya', 'religi', 'edukasi']
+category_counts = df[category_columns].sum()
+
+plt.figure(figsize=(10, 6))
+category_counts.plot(kind='bar')
+plt.title('Distribusi Tempat Wisata Berdasarkan Tipe Kategori')
+plt.ylabel('Jumlah Tempat Wisata')
+plt.xlabel('Kategori')
+plt.xticks(rotation=45)
+plt.show()
+
+Menjumlahkan nilai di setiap kolom kategori. Diasumsikan bahwa kolom-kolom ini berisi nilai biner (0/1), menunjukkan apakah tempat wisata tersebut termasuk dalam kategori tertentu. Menampilkan jumlah tempat wisata untuk masing-masing kategori dalam bentuk bar chart.
+
 ## Variabel-Variabel pada Dataset
 
 1. `no` - nomor urut
