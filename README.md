@@ -82,7 +82,6 @@ Fungsi ini mendefinisikan kata kunci untuk mengelompokkan tempat wisata ke dalam
 
 - kode:
   
-Memeriksa data yang hilang
 print("Data yang hilang di setiap kolom:")
 print(df.isnull().sum())
 
@@ -90,7 +89,6 @@ Menampilkan jumlah nilai yang hilang (NaN) pada setiap kolom.
 
 - kode:
   
-Memeriksa duplikasi
 print("\nData duplikat:")
 print(df.duplicated().sum())
 
@@ -98,7 +96,6 @@ Menampilkan jumlah baris data yang duplikat (sama persis).
 
 - kode:
   
-Statistik deskriptif untuk data numerik
 print("\nStatistik Deskriptif:")
 print(df.describe())
 
